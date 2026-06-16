@@ -63,9 +63,10 @@ def ai(user_id, text):
     prompt = "\n".join(history + [text])
 
     response = client.models.generate_content(
-    model="gemini-2.5-flash"
+    model="gemini-2.5-flash",
     contents=text
     )
+
     
 
     memory[user_id].append(text)
