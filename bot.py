@@ -1,18 +1,28 @@
+import os
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 import google.generativeai as genai
-import os
 
+# گرفتن API از Railway Variables
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    text = update.message.text
-    response = model.generate_content(text)
-    await update.message.reply_text(response.text)
+# جواب دادن به پیام‌ها
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_text = update.message.text
 
-app = Application.builder().token(os.getenv("8764803349:AAEpu6Lo7fxosquJBwaUosfUSTy0YPKC554"))
+    try:
+        response = model.generate_content(user_text)
+        await update.message.reply_text(response.text)
+    except Exception as e:
+        await update.message.reply_text("خطا رخ داد ❌")
 
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, chat))
+# ساخت ربات
+app = Application.builder().token(os.getenv("8764803349:AAEpu6Lo7fxosquJBwaUosfUSTy0YPKC554")).build()
+
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+
+print("Bot started...")
 
 app.run_polling()
