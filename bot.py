@@ -3,11 +3,9 @@ from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 import google.generativeai as genai
 
-# API KEY
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-# مدل درست (این مهمه)
-model = genai.GenerativeModel("gemini-1.5-flash-latest")
+model = genai.GenerativeModel("gemini-pro")
 
 
 # chat function
