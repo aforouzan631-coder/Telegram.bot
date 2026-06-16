@@ -19,7 +19,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("خطا رخ داد ❌")
 
 # ساخت ربات
-app = Application.builder().token(os.getenv("8764803349:AAEpu6Lo7fxosquJBwaUosfUSTy0YPKC554")).build()
+app = Application.builder().token(os.getenv("8962829320:AAHz3zbqOxSXpM-I_MU0LEVTpzr9eZvKyCc")).build()
 
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
