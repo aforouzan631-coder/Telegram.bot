@@ -5,7 +5,7 @@ import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-model = genai.GenerativeModel("gemini-1.5-flash-002")
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
