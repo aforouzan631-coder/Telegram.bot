@@ -7,7 +7,7 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # مدل درست (این مهمه)
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-1.5-flash"model = genai.GenerativeModel("gemini-pro")
 
 
 # chat function
