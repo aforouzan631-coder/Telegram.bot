@@ -11,7 +11,7 @@ async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response = model.generate_content(text)
     await update.message.reply_text(response.text)
 
-app = Application.builder().token("8764803349:AAEpu6Lo7fxosquJBwaUosfUSTy0YPKC554").build()
+app = Application.builder().token(os.getenv("8764803349:AAEpu6Lo7fxosquJBwaUosfUSTy0YPKC554"))
 
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, chat))
 
